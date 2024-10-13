@@ -1,8 +1,8 @@
-name: SymplyPlugin
-api: 5.21.0
-version: 0.0.3
+name: Olympia-Symply
+api: 5.0.0
+version: 1.0.0
 main: SenseiTarzan\SymplyPlugin\Main
-description: "System of custom Block et Item best that Customies and support recipes json"
+description: "System of custom Block et Item best that Customies and support recipes json adapted for OlympiaPE"
 load: STARTUP
 loadbefore:
   - "WaterLogging"
