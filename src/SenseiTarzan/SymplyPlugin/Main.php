@@ -79,13 +79,6 @@ class Main extends PluginBase
 					CreativeInventory::getInstance()->add($item);
 			}
 			$server = Server::getInstance();
-			$worldManager = $server->getWorldManager();
-			$defaultWorld = $worldManager->getDefaultWorld()->getFolderName();
-			foreach ($worldManager->getWorlds() as $world){
-				$worldManager->unloadWorld($world, true);
-				$worldManager->loadWorld($world->getFolderName());
-			}
-			$worldManager->setDefaultWorld($worldManager->getWorldByName($defaultWorld));
 			$asyncPool = $server->getAsyncPool();
 			$asyncPool->addWorkerStartHook(static function(int $worker) use($asyncPool) : void{
 				$asyncPool->submitTaskToWorker(new AsyncRegisterVanillaTask(), $worker);
