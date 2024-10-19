@@ -50,8 +50,8 @@ class AsyncRegisterBehaviorsTask extends AsyncTask
 			SymplyBlockFactory::getInstance(true)->register($blockClosure, $serialize, $deserialize);
 		}
 		SymplyBlockFactory::getInstance()->initBlockBuilders();
-		foreach ($this->itemFuncs as [$itemClosure, $serialize, $deserialize]){
-			SymplyItemFactory::getInstance(true)->register($itemClosure, $serialize, $deserialize);
+		foreach ($this->itemFuncs as [$itemClosure, $serialize, $deserialize, $argv]){
+			SymplyItemFactory::getInstance(true)->register($itemClosure, $serialize, $deserialize, unserialize($argv, ['allowed_classes' => true]));
 		}
 	}
 }
