@@ -71,7 +71,7 @@ final class SymplyItemFactory
 	}
 
 	/**
-	 * @param Closure(): (Item&ICustomItem) $itemClosure
+	 * @param Closure(?array $argv): (Item&ICustomItem) $itemClosure
 	 */
 	public function register(Closure $itemClosure, ?Closure $serializer = null, ?Closure $deserializer = null, ?array $argv = null) : void
 	{

@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace SenseiTarzan\SymplyPlugin\Utils;
 
+use pmmp\thread\ThreadSafeArray;
 use pocketmine\nbt\tag\ByteTag;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\FloatTag;
@@ -61,7 +62,6 @@ class Utils
 			default => null,
 		};
 	}
-
 	/**
 	 * Creates a Tag that is either a ListTag or CompoundTag based on the data types of the keys in the provided array.
 	 */
