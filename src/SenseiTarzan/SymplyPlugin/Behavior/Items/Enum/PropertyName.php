@@ -14,7 +14,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author AID-LEARNING
+ * @author AID-LEARNING & RemBog
  * @link https://github.com/AID-LEARNING
  *
  */
