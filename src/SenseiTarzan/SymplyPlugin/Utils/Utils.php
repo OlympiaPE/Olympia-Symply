@@ -65,7 +65,7 @@ class Utils
 	/**
 	 * Creates a Tag that is either a ListTag or CompoundTag based on the data types of the keys in the provided array.
 	 */
-	private static function getArrayTag(array $array) : Tag {
+	public static function getArrayTag(array $array) : Tag {
 		if(array_keys($array) === range(0, count($array) - 1)) {
 			return new ListTag(array_map(fn($value) => self::getTagType($value), $array));
 		}

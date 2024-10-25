@@ -54,7 +54,9 @@ use SenseiTarzan\SymplyPlugin\Behavior\Items\Enum\TextureTypeEnum;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\ICustomItem;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Info\ItemCreativeInfo;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\AllowOffHandProperty;
+use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\AnimatesInToolbarProperty;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\CanDestroyInCreativeProperty;
+use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\CanDestroyToolbarProperty;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\EnchantableSlotProperty;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\EnchantableValueProperty;
 use SenseiTarzan\SymplyPlugin\Behavior\Items\Property\FoilProperty;
@@ -420,6 +422,22 @@ final class ItemBuilder
 		return $this->addProperty(new StackedByDataProperty($value));
 	}
 
+    /**
+     * @return $this
+     */
+    public function setAnimatesInToolbarProperty(bool $value = true) : static
+    {
+        return $this->addProperty(new AnimatesInToolbarProperty($value));
+    }
+
+    /**
+     * @return $this
+     */
+    public function setCanDestroyToolbarProperty(bool $value = true) : static
+    {
+        return $this->addProperty(new CanDestroyToolbarProperty($value));
+    }
+
 	/**
 	 * Change la taille de la texture
 	 * @param string|null $mode je ne sais pas quoi il sert mais il existe
@@ -463,27 +481,27 @@ final class ItemBuilder
 		$horizontal_offHand = round(0.075 * $newWidth, 8);
 		$vertical_offHand = round(0.25 * $newHeight, 8);
 		return $this->setRenderOffsets(
-			mainHand: [
+			[
 				new RenderOffsetSubComponent(
 					RenderSubOffsetsTypeEnum::FIRST_PERSON,
-					scale: new Vector3($horizontal_mainHand, round(($handEquipped ? 0.065 : 0.1) * $newHeight, 8), $horizontal_mainHand)
+					new Vector3($horizontal_mainHand, round(($handEquipped ? 0.065 : 0.1) * $newHeight, 8), $horizontal_mainHand)
 				),
 				new RenderOffsetSubComponent(
 					RenderSubOffsetsTypeEnum::THIRD_PERSON,
-					scale: new Vector3($horizontal_mainHand = round(0.1 * $newWidth, 8), round(0.1 * $newHeight, 8), $horizontal_mainHand)
+					new Vector3($horizontal_mainHand = round(0.1 * $newWidth, 8), round(0.1 * $newHeight, 8), $horizontal_mainHand)
 				)
 			],
-			offHand:  [
+			[
 				new RenderOffsetSubComponent(
 					RenderSubOffsetsTypeEnum::FIRST_PERSON,
-					scale: new Vector3($horizontal_offHand, $vertical_offHand, $horizontal_offHand)
+					new Vector3($horizontal_offHand, $vertical_offHand, $horizontal_offHand)
 				),
 				new RenderOffsetSubComponent(
 					RenderSubOffsetsTypeEnum::THIRD_PERSON,
-					scale: new Vector3($horizontal_offHand, $vertical_offHand, $horizontal_offHand)
+					new Vector3($horizontal_offHand, $vertical_offHand, $horizontal_offHand)
 				)
 			],
-			mode: $mode
+			$mode
 		);
 	}
 

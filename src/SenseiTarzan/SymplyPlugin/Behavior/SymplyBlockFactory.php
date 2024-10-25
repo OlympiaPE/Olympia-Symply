@@ -74,7 +74,7 @@ final class SymplyBlockFactory
 
 	public function __construct(private readonly bool $asyncMode = false){}
 	/**
-	 * @param Closure(): (Block&IBlockCustom) $blockClosure
+	 * @param Closure(?array ): (Block&IBlockCustom) $blockClosure
 	 */
 	public function register(Closure $blockClosure, ?Closure $serializer = null, ?Closure $deserializer = null, ?array $argv = null) : void
 	{

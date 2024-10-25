@@ -29,7 +29,8 @@ enum EnchantSlotEnum : string
 {
 	case SWORD = "sword";
 	case HOE = "hoe";
-	case  SHOVEL = "shovel";
+	case AXE = "axe";
+	case SHOVEL = "shovel";
 	case PICKAXE = "pickaxe";
 	case BOW = "bow";
 	case ALL = "all";
@@ -45,7 +46,7 @@ enum EnchantSlotEnum : string
 	case ARMOR_FEET = "armor_feet";
 	case COSMETIC_HEAD = "cosmetic_head";
 
-	public static function fromArmorTypeInfo(int $slotArmor) : EnchantSlotEnum
+	public static function fromArmorTypeInfo(int $slotArmor): EnchantSlotEnum
 	{
 		return match ($slotArmor){
 			ArmorInventory::SLOT_HEAD => self::ARMOR_HEAD,
@@ -55,5 +56,4 @@ enum EnchantSlotEnum : string
 			default => self::ALL
 		};
 	}
-
 }

@@ -88,12 +88,12 @@ trait HackToolTrait
 			->addProperty(new DamageProperty($this->getAttackPoints()))
 			->setHandEquipped(true)
 			->addProperty(new EnchantableSlotProperty(match ($this->getBlockToolType()) {
-				BlockToolType::AXE => EnchantSlotEnum::SWORD,
+                BlockToolType::SWORD => EnchantSlotEnum::SWORD,
+				BlockToolType::AXE => EnchantSlotEnum::AXE,
 				BlockToolType::HOE => EnchantSlotEnum::HOE,
-				BlockToolType::SWORD => EnchantSlotEnum::SWORD,
 				BlockToolType::PICKAXE => EnchantSlotEnum::PICKAXE,
 				BlockToolType::SHOVEL => EnchantSlotEnum::SHOVEL,
-				default => EnchantSlotEnum::SWORD
+				default => EnchantSlotEnum::ALL
 			}))
 			->setCreativeInfo(new ItemCreativeInfo(CategoryCreativeEnum::EQUIPMENT, match ($this->getBlockToolType()) {
 				BlockToolType::AXE => GroupCreativeEnum::AXE,
