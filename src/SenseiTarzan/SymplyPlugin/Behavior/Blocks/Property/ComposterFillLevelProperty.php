@@ -21,13 +21,23 @@
 
 declare(strict_types=1);
 
-namespace SenseiTarzan\SymplyPlugin\Behavior\Blocks\Enum;
+namespace SenseiTarzan\SymplyPlugin\Behavior\Blocks\Property;
 
-enum PropertyName : string
+use pocketmine\data\bedrock\block\BlockStateNames;
+use pocketmine\nbt\tag\IntTag;
+use pocketmine\nbt\tag\ListTag;
+use function array_map;
+use function sort;
+use const SORT_NUMERIC;
+
+final class ComposterFillLevelProperty extends BlockProperty
 {
-	case CROPS = "symply:crops";
-	case ROTATION = "symply:rotation";
-	case SLAB_STATE = "symply:slab_state";
-	case OPEN_STATE = "symply:open";
-    case CUSTOM_LEVEL = "symply:custom_level";
+	/**
+	 * @param int[] $composterFillLevel
+	 */
+	public function __construct(array $composterFillLevel = [])
+	{
+		sort($composterFillLevel, SORT_NUMERIC);
+		parent::__construct(BlockStateNames::COMPOSTER_FILL_LEVEL, new ListTag(array_map(fn(int $number) => new IntTag($number), $composterFillLevel)));
+	}
 }
